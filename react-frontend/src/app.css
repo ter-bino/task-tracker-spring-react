@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        font-family: 'Rubik', sans-serif;
+    }
+    
+    html {
+        @apply bg-gray-200;
+    }
+}
+
+@layer components {
+    .header {
+        @apply sticky top-0 min-w-full max-w-full h-16 px-4 md:px-8 xl:px-16 py-2 overflow-auto whitespace-nowrap bg-blue-400;
+    }
+    .nav-link {
+        @apply transition-transform duration-75 cursor-pointer hover:text-blue-800 hover:scale-105;
+    }
+}
+
+@layer utilities {
+
+}
