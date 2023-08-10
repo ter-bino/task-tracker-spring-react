@@ -1,6 +1,10 @@
 package ter.bino.tasktracker.model;
 
+import java.time.Instant;
 import java.time.LocalDate;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
@@ -33,4 +37,8 @@ public class Task {
 	private boolean isImportant;
 	@Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
 	private boolean isCompleted;
+	@CreatedDate
+	private Instant createdAt;
+	@LastModifiedDate
+	private Instant updatedAt;
 }
