@@ -14,13 +14,13 @@ TaskItem.propTypes = {
 
 function TaskItem({task, onDelete}) {
     return <div className={ "mb-4 shadow-lg rounded-2xl p-4 flex " + (false ? "bg-red-200":"bg-gray-100") }>
-        <div className="flex-grow">
+        <div className="flex-grow w-3/5">
             <div className="font-bold truncate">
                 { task.title }
                 {task.completed ? <span className="ml-1 text-white px-2 bg-green-500 rounded-full">✓</span>:null}
                 {task.important ? <span className="ml-1 text-white px-2 bg-red-500 rounded-full">!</span>:null}
             </div>
-            <p>{task.description}</p>
+            <p className="truncate">{task.description}</p>
             <p>{task.deadline}</p>
         </div>
         <div className="flex flex-col md:flex-row">
