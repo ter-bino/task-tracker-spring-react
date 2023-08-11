@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 TaskItem.propTypes = {
     task: PropTypes.shape({
@@ -13,7 +14,7 @@ TaskItem.propTypes = {
 };
 
 function TaskItem({task, onDelete}) {
-    return <div className={ "mb-4 shadow-lg rounded-2xl p-4 flex " + (false ? "bg-red-200":"bg-gray-100") }>
+    return <Link to={`/view/${task.taskId}`} className={ "mb-4 shadow-lg rounded-2xl p-4 flex " + (false ? "bg-red-200":"bg-gray-100") }>
         <div className="flex-grow w-3/5">
             <div className="font-bold truncate">
                 { task.title }
@@ -24,10 +25,10 @@ function TaskItem({task, onDelete}) {
             <p>{task.deadline}</p>
         </div>
         <div className="flex flex-col md:flex-row">
-            <button className="px-2 my-auto md:mx-2 md:w-32 text-center bg-yellow-500 rounded-lg text-white">EDIT</button>
+            <Link to={`/edit/${task.taskId}`} className="px-2 my-auto md:mx-2 md:w-32 text-center bg-yellow-500 rounded-lg text-white">EDIT</Link>
             <button type="button" onClick={()=>onDelete(task.taskId)} className="px-2 my-auto md:mx-2 md:w-32 text-center bg-red-500 rounded-lg text-white">DELETE</button>
         </div>
-    </div>
+    </Link>
 }
 
 export default TaskItem;

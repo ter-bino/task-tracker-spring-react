@@ -1,4 +1,4 @@
-
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return <div className="header flex flex-row justify-between items-center">
@@ -13,8 +13,8 @@ function Header() {
         ]
     </h1>
     <div className="flex flex-row justify-end items-center uppercase sm:text-sm md:text-lg xl:text-2xl">
-        [ <span className="m-2 nav-link text-white">home</span> ]
-        [ <span className="m-2 nav-link text-white">create task</span> ]
+        [ <NavLink to="/" className="m-2 nav-link text-white">home</NavLink> ]
+        [ <NavLink to="/create" className="m-2 nav-link text-white">create task</NavLink> ]
     </div>
   </div>;
 }
