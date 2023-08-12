@@ -2,7 +2,10 @@ package ter.bino.tasktracker.controller;
 
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ter.bino.tasktracker.model.Task;
@@ -22,8 +26,14 @@ public class TaskController {
 	private TaskRepository taskRepository;
 	
 	@GetMapping("/")
-	public Iterable<Task> getAllTasks() {
-		return taskRepository.findAllByOrderByDeadlineAsc();
+	public Iterable<Task> getAllTasks(@RequestParam Optional<String> page, @RequestParam Optional<String> perPage) {
+		if(perPage.isPresent() && page.isPresent() && StringUtils.isNumeric(perPage.get()) && StringUtils.isNumeric(page.get())) {
+			return taskRepository.findAll(
+					PageRequest.of(Integer.parseInt(page.get()), Integer.parseInt(perPage.get()), Sort.by("deadline"))
+				);
+		} else {
+			return taskRepository.findAllByOrderByDeadlineAsc();
+		}
 	}
 	
 	@PostMapping("/add")
