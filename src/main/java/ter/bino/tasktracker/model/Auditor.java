@@ -19,7 +19,7 @@ class Auditor {
 
     @Column(name = "created_at", updatable = false)
     @CreatedDate
-    private Instant createdAy;
+    private Instant createdAt;
 
     @Column(name = "updated_at")
     @LastModifiedDate
