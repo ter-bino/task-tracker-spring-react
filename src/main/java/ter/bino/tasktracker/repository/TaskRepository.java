@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import ter.bino.tasktracker.model.Task;
 
 public interface TaskRepository extends CrudRepository<Task, Long>{
-
+	Iterable<Task> findAllByOrderByDeadlineAsc();
 }

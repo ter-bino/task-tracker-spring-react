@@ -23,7 +23,7 @@ public class TaskController {
 	
 	@GetMapping("/")
 	public Iterable<Task> getAllTasks() {
-		return taskRepository.findAll();
+		return taskRepository.findAllByOrderByDeadlineAsc();
 	}
 	
 	@PostMapping("/add")
