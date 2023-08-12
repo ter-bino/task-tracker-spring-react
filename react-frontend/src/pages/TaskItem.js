@@ -1,9 +1,18 @@
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function TaskItem({task, onDelete}) {
 
     const navigate = useNavigate();
+
+    const [attention, setAttention] = useState(false);
+
+    useEffect(()=> {
+        let deadline = new Date(task.deadline);
+        let flagDate = new Date(task.deadline).setDate(deadline.getDate() - 1);
+        setAttention(new Date() >= flagDate);
+    }, [task.deadline])
 
     TaskItem.propTypes = {
         task: PropTypes.shape({
@@ -17,7 +26,7 @@ function TaskItem({task, onDelete}) {
         onDelete: PropTypes.func.isRequired
     };
 
-    return <div onClick={()=>navigate(`/view/${task.taskId}`)} className={ "mb-4 shadow-lg rounded-2xl p-4 flex " + (false ? "bg-red-200":"bg-gray-100") }>
+    return <div onClick={()=>navigate(`/view/${task.taskId}`)} className={ "mb-4 shadow-lg rounded-2xl p-4 flex " + (!task.completed && attention ? "bg-red-200":"bg-gray-100") }>
         <div className="flex-grow w-3/5">
             <div className="font-bold truncate">
                 { task.title }
