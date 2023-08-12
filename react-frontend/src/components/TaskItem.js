@@ -29,7 +29,7 @@ function TaskItem({task, onDelete}) {
             <p>{task.deadline}</p>
         </div>
         <div className="flex flex-col md:flex-row">
-            <NavLink to={`/edit/${task.taskId}`} className="btn warning my-auto md:mx-2 md:w-32 text-center">EDIT</NavLink>
+            <button type="button" onClick={(e)=>{e.stopPropagation();navigate(`/edit/${task.taskId}`)}} className="btn warning my-auto md:mx-2 md:w-32 text-center">EDIT</button>
             <button type="button" onClick={(e)=>{e.stopPropagation();onDelete(task.taskId)}} className="btn danger my-auto md:mx-2 md:w-32 text-center">DELETE</button>
         </div>
     </div>
