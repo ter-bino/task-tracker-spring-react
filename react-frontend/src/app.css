@@ -5,6 +5,7 @@
 @layer base {
     * {
         font-family: 'Rubik', sans-serif;
+        box-sizing: border-box;
     }
     
     html {
@@ -18,6 +19,9 @@
     }
     .content {
         @apply px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-32 py-4 flex-grow w-full bg-gray-200 overflow-auto;
+    }
+    .pagination {
+        @apply flex flex-row justify-center items-center;
     }
     .nav-link {
         @apply transition-transform duration-75 cursor-pointer hover:text-blue-800 hover:scale-105;
@@ -33,6 +37,18 @@
     }
     .danger.btn {
         @apply bg-red-500 text-white cursor-pointer hover:bg-red-600;
+    }
+    .pagination.btn {
+        @apply px-2 py-1 rounded-none border bg-gray-300 border-gray-600 text-gray-600;
+    }
+    .pagination.btn.active {
+        @apply border border-blue-600 text-blue-600;
+    }
+    .pagination:first-child {
+        @apply rounded-l-lg ;
+    }
+    .pagination:last-child {
+        @apply rounded-r-lg ;
     }
 }
 
