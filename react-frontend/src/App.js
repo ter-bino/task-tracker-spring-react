@@ -2,10 +2,10 @@ import './app.css';
 
 import React from 'react';
 import Header from './components/Header';
-import TaskList from './components/TaskList';
-import TaskCreate from './components/TaskCreate';
-import TaskEdit from './components/TaskEdit';
-import TaskView from './components/TaskView';
+import TaskList from './pages/TaskList';
+import TaskCreate from './pages/TaskCreate';
+import TaskEdit from './pages/TaskEdit';
+import TaskView from './pages/TaskView';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
