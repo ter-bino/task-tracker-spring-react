@@ -22,7 +22,7 @@ function TaskItem({task, onDelete}) {
             <div className="font-bold truncate">
                 { task.title }
                 {task.completed ? <span className="ml-1 text-white px-2 bg-green-500 rounded-full">✓</span>:null}
-                {task.important ? <span className="ml-1 text-white px-2 bg-red-500 rounded-full">!</span>:null}
+                {task.important && !task.completed ? <span className="ml-1 text-white px-2 bg-red-500 rounded-full">!</span>:null}
             </div>
             <p className="truncate">{task.description}</p>
             <p>{task.deadline}</p>
