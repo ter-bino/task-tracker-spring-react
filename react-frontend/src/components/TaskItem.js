@@ -25,8 +25,8 @@ function TaskItem({task, onDelete}) {
             <p>{task.deadline}</p>
         </div>
         <div className="flex flex-col md:flex-row">
-            <Link to={`/edit/${task.taskId}`} className="px-2 my-auto md:mx-2 md:w-32 text-center bg-yellow-500 rounded-lg text-white">EDIT</Link>
-            <button type="button" onClick={()=>onDelete(task.taskId)} className="px-2 my-auto md:mx-2 md:w-32 text-center bg-red-500 rounded-lg text-white">DELETE</button>
+            <Link to={`/edit/${task.taskId}`} className="btn warning my-auto md:mx-2 md:w-32 text-center">EDIT</Link>
+            <button type="button" onClick={()=>onDelete(task.taskId)} className="btn danger my-auto md:mx-2 md:w-32 text-center">DELETE</button>
         </div>
     </Link>
 }
