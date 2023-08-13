@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       minWidth: {
         'sm': '360px'
+      },
+      maxHeight: {
+        '3/4-screen': '75vh',
       }
     },
   },

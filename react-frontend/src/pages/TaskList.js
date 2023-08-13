@@ -63,19 +63,21 @@ function TaskList() {
                 <input type="text" onChange={(e)=>{setSearch(e.target.value)}} className="ml-2 px-2 w-16 sm:w-32 lg:w-64 focus:outline-none border-2 border-gray-400 rounded-lg"/>
             </div>
         </div>
-        {tasks.length?
-            tasks.map((task) => {
-                return <TaskItem key={task.taskId} task={task} onDelete={deleteItem}/>
-            })
-            :
-            <div className="bg-gray-300 h-64 flex justify-center items-center rounded-2xl">
-                <div className="text-center text-4xl text-gray-500 uppercase">no tasks to show</div>
-            </div>
-        }
-        {tasks.length?
-            <Pagination page={page} items={items} totalItems={totalItems} totalPages={totalPages} pageChanged={setPage}/>
-            : null
-        }
+        <div className="max-h-3/4-screen overflow-x-auto">
+            {tasks.length?
+                tasks.map((task) => {
+                    return <TaskItem key={task.taskId} task={task} onDelete={deleteItem}/>
+                })
+                :
+                <div className="bg-gray-300 h-64 flex justify-center items-center rounded-2xl">
+                    <div className="text-center text-4xl text-gray-500 uppercase">no tasks to show</div>
+                </div>
+            }
+        </div>
+            {tasks.length?
+                <Pagination page={page} items={items} totalItems={totalItems} totalPages={totalPages} pageChanged={setPage}/>
+                : null
+            }
     </div>
 }
 

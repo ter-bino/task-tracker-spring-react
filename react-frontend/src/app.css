@@ -11,6 +11,25 @@
     html {
         @apply bg-gray-200 min-w-sm;
     }
+    /* width */
+    ::-webkit-scrollbar {
+        @apply w-2 h-1;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        @apply rounded-md bg-blue-200;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-md bg-blue-400;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-blue-800;
+    }
 }
 
 @layer components {
