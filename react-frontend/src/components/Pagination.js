@@ -34,9 +34,9 @@ function Pagination({page, items, totalItems, totalPages, pageChanged}) {
 
     return <div>
         <div className="flex justify-between items-center">
-            <div className="text-gray-500 text-sm">Showing {items} of {totalItems} tasks</div>
+            <div className="text-gray-500 text-xs sm:text-sm">Showing {items} of {totalItems} tasks</div>
             {totalPages!==1?
-                <div className="pagination text-sm">
+                <div className="pagination text-xs sm:text-sm">
                     {page <= 3? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(1)}>First</button>}
                     {page <= 1? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(page-1)}>Prev</button>}
                     {pageNumbers}
