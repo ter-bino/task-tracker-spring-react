@@ -37,11 +37,11 @@ function Pagination({page, items, totalItems, totalPages, pageChanged}) {
             <div className="text-gray-500 text-sm">Showing {items} of {totalItems} tasks</div>
             {totalPages!==1?
                 <div className="pagination text-sm">
-                    {page === 1? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(1)}>First</button>}
-                    {page << 3? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(page-1)}>Prev</button>}
+                    {page <= 3? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(1)}>First</button>}
+                    {page <= 1? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(page-1)}>Prev</button>}
                     {pageNumbers}
-                    {page >> totalPages-2? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(page+1)}>Next</button>}
-                    {page === totalPages? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(totalPages)}>Last</button>}
+                    {page >= totalPages? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(page+1)}>Next</button>}
+                    {page >= totalPages-2? null: <button type="button" className="btn pagination" onClick={()=>pageChanged(totalPages)}>Last</button>}
                 </div>
             :
             <div className="text-gray-500 text-sm">No other pages</div>
