@@ -26,9 +26,11 @@ public class TaskController {
 	private TaskRepository taskRepository;
 	
 	@GetMapping("/")
-	public Iterable<Task> getAllTasks(@RequestParam Optional<String> page, @RequestParam Optional<String> perPage) {
+	public Iterable<Task> getAllTasks(@RequestParam Optional<String> page, @RequestParam Optional<String> perPage, @RequestParam Optional<String> search) {
 		if(perPage.isPresent() && page.isPresent() && StringUtils.isNumeric(perPage.get()) && StringUtils.isNumeric(page.get())) {
-			return taskRepository.findAll(
+			return taskRepository.findByTitleContainsOrDescriptionContains(
+					search.orElse(""),
+					search.orElse(""),
 					PageRequest.of(Integer.parseInt(page.get()), Integer.parseInt(perPage.get()), Sort.by("deadline"))
 				);
 		} else {

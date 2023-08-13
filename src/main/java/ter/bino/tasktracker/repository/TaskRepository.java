@@ -10,5 +10,6 @@ import ter.bino.tasktracker.model.Task;
 public interface TaskRepository extends CrudRepository<Task, Long>, PagingAndSortingRepository<Task, Long>{
 	Iterable<Task> findAll();
 	Iterable<Task> findAllByOrderByDeadlineAsc();
+	Page<Task> findByTitleContainsOrDescriptionContains(String searchTitle, String searchDescription, Pageable page);
 	Page<Task> findAll(Pageable page);
 }
