@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import TaskItem from "./TaskItem";
 import axios from "axios";
 import Pagination from "../components/Pagination";
@@ -11,7 +11,11 @@ function TaskList() {
     const [totalItems, setTotalItems] = useState(null);
     const [totalPages, setTotalPages] = useState(null);
 
-    const fetchTasks = async () => {
+    useEffect(() => {
+        setPage(1);
+    }, [perPage])
+
+    const fetchTasks = useCallback(async () => {
         try {
           const response = await axios.get(`api/tasks/?page=${page-1}&perPage=${perPage}`);
           setTasks(response.data.content);
@@ -22,7 +26,7 @@ function TaskList() {
           console.error(error);
           alert("Unable to fetch tasks.");
         }
-    };
+    }, [page, perPage]);
 
     const deleteItem = (id) => {
         axios.delete(`api/tasks/delete/${id}`)
@@ -35,14 +39,7 @@ function TaskList() {
             }) 
     }
 
-    useEffect(() => {
-        fetchTasks();
-    }, [page, perPage]);
-
-    useEffect(() => {
-        setPage(1);
-        fetchTasks();
-    }, [perPage])
+    useEffect(()=>{fetchTasks()}, [fetchTasks])
 
     return <div>
         <div className="flex flex-row justify-start items-center mb-2">
