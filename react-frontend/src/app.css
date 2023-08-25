@@ -58,10 +58,10 @@
         @apply bg-red-500 text-white cursor-pointer hover:bg-red-600;
     }
     .pagination.btn {
-        @apply px-1 sm:px-2 py-1 rounded-none border bg-gray-300 border-gray-600 text-gray-600;
+        @apply px-1 sm:px-2 py-1 rounded-none border bg-blue-200 border-gray-500 text-gray-500 font-bold;
     }
     .pagination.btn.active {
-        @apply border border-blue-600 text-blue-600;
+        @apply border-blue-600 text-blue-600;
     }
     .pagination:first-child {
         @apply rounded-l-lg ;
