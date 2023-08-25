@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 function TaskEdit() {
@@ -25,7 +26,12 @@ function TaskEdit() {
 
     const editTask = () => {
         axios.put(`api/tasks/edit/${id}`, {title: title, description: description, deadline: deadline, important: important, completed: completed})
-            .then(()=> {navigate("/")}, (e)=>{alert(e.message)});
+            .then(()=> {
+                toast.success("Task edited successfully!");
+                navigate("/")
+            }).catch((e)=>{
+                toast.error(e.message)
+            });
     }
 
     return (

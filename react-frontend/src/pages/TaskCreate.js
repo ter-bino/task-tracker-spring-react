@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 function TaskCreate() {
@@ -12,7 +13,13 @@ function TaskCreate() {
 
     const submitNewTask = () => {
         axios.post("api/tasks/add", {title: title, description: description, deadline: deadline, important: important})
-            .then(()=> {navigate("/")}, (e)=>{alert(e.message)});
+            .then(()=> {
+                toast.success("Task added successfully!");
+                navigate("/")
+            })
+            .catch((e)=>{
+                toast.error(e.message)
+            });
     }
 
     return (

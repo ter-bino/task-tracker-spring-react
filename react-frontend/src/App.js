@@ -1,4 +1,5 @@
 import './app.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 import React from 'react';
 import Header from './components/Header';
@@ -7,6 +8,7 @@ import TaskCreate from './pages/TaskCreate';
 import TaskEdit from './pages/TaskEdit';
 import TaskView from './pages/TaskView';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return <div>
@@ -19,6 +21,18 @@ function App() {
           <Route path="/view/:id" element={<TaskView />} />
         </Routes>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
   </div>
 }
 

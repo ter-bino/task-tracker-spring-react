@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { toast } from "react-toastify";
 import TaskItem from "./TaskItem";
 import axios from "axios";
 import Pagination from "../components/Pagination";
@@ -29,18 +30,18 @@ function TaskList() {
           setTotalPages(response.data.totalPages);
         } catch (error) {
           console.error(error);
-          alert("Unable to fetch tasks.");
+          toast.error("Unable to fetch tasks.");
         }
     }, [page, perPage, search]);
 
     const deleteItem = (id) => {
         axios.delete(`api/tasks/delete/${id}`)
             .then(response => {
-                alert(response.data);
+                toast.success("Task deleted successfully!");
                 fetchTasks();
             })
             .catch(error => {
-                alert(error)
+                toast.error(error.message)
             }) 
     }
 
